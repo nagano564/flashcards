@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Cards Study App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Flip Cards Study App</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="input">Create Cards</button>
+            <button class="tab-btn" data-tab="study">Study Mode</button>
+        </div>
+
+        <div id="input-section" class="section active">
+            <h2>Create New Cards</h2>
+            <div class="input-methods">
+                <div class="manual-input">
+                    <h3>Manual Input</h3>
+                    <form id="card-form">
+                        <input type="text" id="term" placeholder="Enter term" required>
+                        <textarea id="definition" placeholder="Enter definition" required></textarea>
+                        <button type="submit">Add Card</button>
+                    </form>
+                </div>
+                <div class="json-input">
+                    <h3>Import from JSON</h3>
+                    <p class="hint">Upload a JSON file with key-value pairs</p>
+                    <input type="file" id="json-file" accept=".json">
+                    <button id="import-json">Import Cards</button>
+                </div>
+            </div>
+            <div id="cards-list">
+                <h3>Your Cards</h3>
+                <div class="cards-container"></div>
+            </div>
+        </div>
+
+        <div id="study-section" class="section">
+            <h2>Study Mode</h2>
+            <p class="study-hint">Showing definitions first - click the card or use the button below to reveal the term!</p>
+            <div class="study-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p class="card-text">Click to start studying!</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="study-controls">
+                <button id="prev-btn">Previous</button>
+                <button id="flip-btn">Flip Card</button>
+                <button id="next-btn">Next</button>
+                <button id="shuffle-btn">Shuffle Cards</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
