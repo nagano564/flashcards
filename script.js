@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cards = JSON.parse(localStorage.getItem('flashcards')) || [];
     let currentCardIndex = 0;
     let isFlipped = false;
+    let showDefinitionFirst = true; // New state to track which side to show first
 
     // DOM Elements
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -114,9 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Show definition on front, term on back
-        cardFront.textContent = cards[currentCardIndex].definition;
-        cardBack.textContent = cards[currentCardIndex].term;
+        // Show either definition or term on front based on showDefinitionFirst
+        if (showDefinitionFirst) {
+            cardFront.textContent = cards[currentCardIndex].definition;
+            cardBack.textContent = cards[currentCardIndex].term;
+        } else {
+            cardFront.textContent = cards[currentCardIndex].term;
+            cardBack.textContent = cards[currentCardIndex].definition;
+        }
         isFlipped = false;
         studyCard.classList.remove('flipped');
     }
@@ -171,6 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     shuffleBtn.addEventListener('click', shuffleCards);
+
+    // Toggle display button
+    const toggleDisplayBtn = document.getElementById('toggle-display');
+    toggleDisplayBtn.addEventListener('click', () => {
+        showDefinitionFirst = !showDefinitionFirst;
+        updateStudyCard();
+    });
 
     // Initial display
     displayCards();
