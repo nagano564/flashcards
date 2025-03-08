@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,130 +6,132 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    background-color: #f0f2f5;
+    background-color: #121212;
+    color: #e0e0e0;
+    transition: background 0.3s, color 0.3s;
+    padding: 2rem;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 2rem;
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
     text-align: center;
-    color: #1a73e8;
+    color: #90caf9;
     margin-bottom: 2rem;
 }
 
+/* Tabs */
 .tabs {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     margin-bottom: 2rem;
 }
 
 .tab-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     border: none;
-    background: #fff;
+    background: #333;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
+    color: #e0e0e0;
+    transition: background 0.3s, color 0.3s;
 }
 
 .tab-btn.active {
-    background: #1a73e8;
-    color: white;
+    background: #90caf9;
+    color: #121212;
 }
 
+.tab-btn:not(.active):hover {
+    background: #444;
+}
+
+/* Sections */
 .section {
     display: none;
-    background: white;
+    background: #1e1e1e;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
 .section.active {
     display: block;
 }
 
+/* Input Forms */
 .input-methods {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
 .manual-input, .json-input {
-    background: #f8f9fa;
-    padding: 1.5rem;
+    background: #2a2a2a;
+    padding: 2rem;
     border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-#card-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.hint {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-#json-file {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px dashed #ddd;
-    border-radius: 4px;
+input, textarea, button {
     width: 100%;
-}
-
-@media (max-width: 768px) {
-    .input-methods {
-        grid-template-columns: 1fr;
-    }
-}
-
-input, textarea {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid #444;
+    border-radius: 6px;
     font-size: 1rem;
+    background: #333;
+    color: #e0e0e0;
+    margin-top: 1rem;
 }
 
 textarea {
-    height: 100px;
     resize: vertical;
 }
 
 button {
-    padding: 0.5rem 1rem;
-    background: #1a73e8;
-    color: white;
+    background: #90caf9;
+    color: #121212;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
+    transition: background 0.3s;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 1rem;
 }
 
 button:hover {
-    background: #1557b0;
+    background: #64b5f6;
 }
 
+#delete-all-cards {
+    background: #e53935;
+    color: white;
+}
+
+#delete-all-cards:hover {
+    background: #c62828;
+}
+
+/* Study Cards */
 .study-card {
     perspective: 1000px;
     height: 300px;
-    margin: 2rem 0;
+    margin: 3rem auto;
     cursor: pointer;
     transition: transform 0.2s;
-}
-
-.study-card:hover {
-    transform: scale(1.02);
 }
 
 .card-inner {
@@ -138,7 +141,6 @@ button:hover {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    cursor: pointer;
 }
 
 .card-inner.flipped {
@@ -154,48 +156,50 @@ button:hover {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: white;
+    background: #333;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .card-back {
     transform: rotateY(180deg);
+    background: #90caf9;
+    color: #121212;
 }
 
+/* Study Controls */
 .study-controls {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
+    flex-wrap: nowrap;
+    margin-top: 2rem;
+}
+
+.study-controls button {
+    flex: 1;
+    max-width: 150px;
 }
 
 #shuffle-btn {
-    background-color: #34a853;
-    margin-left: 1rem;
+    background-color: #66bb6a;
 }
 
 #shuffle-btn:hover {
-    background-color: #2d8e47;
+    background-color: #43a047;
 }
 
 .cards-container {
-    margin-top: 1rem;
+    margin-top: 2rem;
     display: grid;
-    gap: 1rem;
-}
-
-.study-hint {
-    text-align: center;
-    color: #666;
-    margin-bottom: 1rem;
-    font-style: italic;
+    gap: 1.5rem;
 }
 
 .saved-card {
-    background: white;
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
