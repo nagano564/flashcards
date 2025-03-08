@@ -130,8 +130,8 @@ button:hover {
     perspective: 1000px;
     height: 300px;
     margin: 3rem auto;
+    max-width: 600px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
 .card-inner {
@@ -162,6 +162,8 @@ button:hover {
     font-size: 1.2rem;
     font-weight: 500;
 }
+
+
 
 .card-back {
     transform: rotateY(180deg);
